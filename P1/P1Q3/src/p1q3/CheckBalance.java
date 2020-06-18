@@ -10,8 +10,11 @@ public class CheckBalance {
         System.out.print("Please Enter an Expression: ");
         String expression = scanner.nextLine();
 
+        //internet source
+        //boolean isBalanced = checkBalancedParentesis(expression);  
         
-        boolean isBalanced = checkBracketBalanced(expression);
+        //lecure source
+        boolean isBalanced = checkBracketBalanced(expression);         
         
         System.out.print(expression + " is ");
         if(isBalanced == true){
@@ -68,7 +71,7 @@ public class CheckBalance {
         int i = 0;
         Stack<Character> stack = new Stack<Character>();
         
-        while(isBalanced == true && !expr.isEmpty()){
+        while(isBalanced == true && !expr.isEmpty() && (i < expr.length())){
             char nextCharacter = expr.charAt(i);
             
             switch(nextCharacter){
@@ -96,12 +99,9 @@ public class CheckBalance {
                     break;
             }
             
+            i++;
         }
         
-        if(!stack.isEmpty()){
-            isBalanced = false;
-        }
-            
-        return isBalanced;
+        return stack.isEmpty()?true:false;
     }
 }
