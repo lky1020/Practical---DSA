@@ -163,9 +163,7 @@ public class Show extends javax.swing.JFrame {
         
         scoreAverage /= studentList.size();
         
-        DecimalFormat df = new DecimalFormat("#.##");
-        String formattedScore = df.format(scoreAverage);
-        JOptionPane.showMessageDialog(null, "Average: " + formattedScore, "Average", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Average: " + String.format("%.2f", scoreAverage), "Average", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButtonAverage1ActionPerformed
 
     private void setModelRow(){
