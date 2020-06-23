@@ -115,7 +115,7 @@ public class PostOfficeSim extends javax.swing.JFrame {
                 
                 serviceList.add(customer);
                 updateDisplay(customer);
-                //announceNumber(customer);
+                //announceNumber(customer); 
             }
             else{
                 JOptionPane.showMessageDialog(null, "No More Customer!!!", "Information", JOptionPane.INFORMATION_MESSAGE);
