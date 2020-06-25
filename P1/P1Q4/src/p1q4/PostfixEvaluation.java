@@ -7,7 +7,7 @@ public class PostfixEvaluation {
     public static void main(String[] args) {
         
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Infix Expression: ");
+        System.out.print("Infix Expression (number, operator): ");
         String exp = scanner.nextLine();
         
         exp = infixToPostfix(exp);
