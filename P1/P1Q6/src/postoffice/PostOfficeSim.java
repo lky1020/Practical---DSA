@@ -115,7 +115,7 @@ public class PostOfficeSim extends javax.swing.JFrame {
                 
                 serviceList.add(customer);
                 updateDisplay(customer);
-                //announceNumber(customer); 
+                jtfRow1.grabFocus();
             }
             else{
                 JOptionPane.showMessageDialog(null, "No More Customer!!!", "Information", JOptionPane.INFORMATION_MESSAGE);
@@ -273,9 +273,9 @@ public class PostOfficeSim extends javax.swing.JFrame {
         jtfRow1.setForeground(new java.awt.Color(255, 51, 51));
         jtfRow1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jtfRow1.setText("-----");
-        jtfRow1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfRow1ActionPerformed(evt);
+        jtfRow1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtfRow1FocusGained(evt);
             }
         });
 
@@ -470,9 +470,10 @@ public class PostOfficeSim extends javax.swing.JFrame {
         counterListener.actionPerformed(evt);
     }//GEN-LAST:event_jbtCounter4ActionPerformed
 
-    private void jtfRow1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfRow1ActionPerformed
-
-    }//GEN-LAST:event_jtfRow1ActionPerformed
+    private void jtfRow1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfRow1FocusGained
+        // TODO add your handling code here:
+        announceNumber(customer); 
+    }//GEN-LAST:event_jtfRow1FocusGained
 
     /**
      * @param args the command line arguments
