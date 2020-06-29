@@ -10,6 +10,7 @@ public class RecordResults extends javax.swing.JFrame {
   private List<Runner> runnerList = new ArrayList<>();
   private List<Runner> finisherList = new ArrayList<>();
   private int currentPosition = 1;
+  private int validRunner = -1;
   private Runner runner;
 
   public RecordResults() {
@@ -162,25 +163,13 @@ public class RecordResults extends javax.swing.JFrame {
 
   private void jbtConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtConfirmActionPerformed
       //Get the runner number and display it name in the jtfname
-      int runnerNumber = Integer.parseInt(jtfNumber.getText());
-      int validRunner = -1;
       boolean duplicateRunner = false;
-      
-      for(int i = 0; i < runnerList.size(); i++){
-          
-          if(runnerNumber == runnerList.get(i).getNumber()){
-              runner = runnerList.get(i);
-              validRunner = i;
-          }
-      }
-      
+
       if(validRunner == -1){
           
           JOptionPane.showMessageDialog(null, "Invalid Runner", "ERROR", JOptionPane.ERROR_MESSAGE);
           
       }else{
-          
-          jtfName.setText(runnerList.get(validRunner).getName());
           
           if(!finisherList.isEmpty()){
               
@@ -209,6 +198,8 @@ public class RecordResults extends javax.swing.JFrame {
           jtaResults.insert(formatFinisherList(), 0);
           
           jtfCurrentPosition.setText("" + currentPosition);
+          jtfNumber.setText("");
+          jtfName.setText("");
           jtfNumber.grabFocus();
       }
       
@@ -218,7 +209,17 @@ public class RecordResults extends javax.swing.JFrame {
   }//GEN-LAST:event_jtfCurrentPositionActionPerformed
 
   private void jtfNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNumberActionPerformed
-    
+      int runnerNumber = Integer.parseInt(jtfNumber.getText());
+      
+      for(int i = 0; i < runnerList.size(); i++){
+          
+          if(runnerNumber == runnerList.get(i).getNumber()){
+              runner = runnerList.get(i);
+              validRunner = i;
+          }
+      }
+      
+      jtfName.setText(runnerList.get(validRunner).getName());
   }//GEN-LAST:event_jtfNumberActionPerformed
 
   private void initializeList() {
