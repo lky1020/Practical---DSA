@@ -165,43 +165,36 @@ public class RecordResults extends javax.swing.JFrame {
       //Get the runner number and display it name in the jtfname
       boolean duplicateRunner = false;
 
-      if(validRunner == -1){
-          
-          JOptionPane.showMessageDialog(null, "Invalid Runner", "ERROR", JOptionPane.ERROR_MESSAGE);
-          
-      }else{
-          
-          if(!finisherList.isEmpty()){
+      if(!finisherList.isEmpty()){
               
-            //Check duplicated runner
-            for(int i = 0; i < finisherList.size(); i++){
+        //Check duplicated runner
+        for(int i = 0; i < finisherList.size(); i++){
                 
-                if(runner.equals(finisherList.get(i))){
-                    duplicateRunner = true;
-                }
-                
+            if(runner.equals(finisherList.get(i))){
+                duplicateRunner = true;
             }
+                
+        }
             
-            if(duplicateRunner == false){
-                finisherList.add(runner);
-                currentPosition++;
-            }else{
-                JOptionPane.showMessageDialog(null, "Duplicated Runner", "ERROR", JOptionPane.ERROR_MESSAGE);
-            }
+        if(duplicateRunner == false){
+            finisherList.add(runner);
+            currentPosition++;
+        }else{
+            JOptionPane.showMessageDialog(null, "Duplicated Runner", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
               
-          }else{
-              finisherList.add(runner);
-              currentPosition++;
-          }
+        }else{
+            finisherList.add(runner);
+            currentPosition++;
+        }
           
-          jtaResults.setText(null);
-          jtaResults.insert(formatFinisherList(), 0);
+        jtaResults.setText(null);
+        jtaResults.insert(formatFinisherList(), 0);
           
-          jtfCurrentPosition.setText("" + currentPosition);
-          jtfNumber.setText("");
-          jtfName.setText("");
-          jtfNumber.grabFocus();
-      }
+        jtfCurrentPosition.setText("" + currentPosition);
+        jtfNumber.setText("");
+        jtfName.setText("");
+        jtfNumber.grabFocus();
       
   }//GEN-LAST:event_jbtConfirmActionPerformed
 
@@ -218,8 +211,14 @@ public class RecordResults extends javax.swing.JFrame {
               validRunner = i;
           }
       }
+      if(validRunner == -1){
+          
+          JOptionPane.showMessageDialog(null, "Invalid Runner", "ERROR", JOptionPane.ERROR_MESSAGE);
+          
+      }else{
+          jtfName.setText(runnerList.get(validRunner).getName());
+      }
       
-      jtfName.setText(runnerList.get(validRunner).getName());
   }//GEN-LAST:event_jtfNumberActionPerformed
 
   private void initializeList() {
