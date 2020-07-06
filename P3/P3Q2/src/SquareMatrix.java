@@ -13,32 +13,26 @@ public class SquareMatrix implements SquareMatrixInterface{
         array = new int[this.row + 1][this.column + 1];
     }
     
-    @Override
     public int[][] getArray() {
         return this.array;
     }
 
-    @Override
     public void setArray(int[][] array) {
         this.array = array;
     }
 
-    @Override
     public int getRow() {
         return this.row;
     }
-
-    @Override
+    
     public void setRow(int row) {
         this.row = row;
     }
 
-    @Override
     public int getColumn() {
         return this.column;
     }
 
-    @Override
     public void setColumn(int column) {
         this.column = column;
     }
