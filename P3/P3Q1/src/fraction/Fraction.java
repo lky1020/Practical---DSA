@@ -7,6 +7,11 @@ public class Fraction implements FractionInterface {
     private int numerator ;
     private int denominator;
     
+    //Result (storing the result of the arithmetric operation)
+    private int newNumerator;
+    private int newDenominator;
+    private FractionInterface resultFraction; 
+    
     public Fraction(){
         
     }
@@ -36,34 +41,75 @@ public class Fraction implements FractionInterface {
         this.denominator = denominator;
     }
 
-    @Override
-    public void addition(int numerator2, int denominato2) {
-        numerator = (getNumerator() * denominato2) + (getDenominator() * numerator2);
-        denominator = getDenominator() * denominato2;
-        reduceFraction(numerator, denominator);
+    public int getNewNumerator() {
+        return newNumerator;
+    }
+
+    public void setNewNumerator(int newNumerator) {
+        this.newNumerator = newNumerator;
+    }
+
+    public int getNewDenominator() {
+        return newDenominator;
+    }
+
+    public void setNewDenominator(int newDenominator) {
+        this.newDenominator = newDenominator;
+    }
+
+    public FractionInterface getResultFraction() {
+        return resultFraction;
+    }
+
+    public void setResultFraction(FractionInterface resultFraction) {
+        this.resultFraction = resultFraction;
     }
 
     @Override
-    public void subtraction(int numerator2, int denominato2) {
-        numerator = (getNumerator() * denominato2) - (getDenominator() * numerator2);
-        denominator = getDenominator() * denominato2;
-        reduceFraction(numerator, denominator);
+    public FractionInterface addition(FractionInterface fraction) {
+        
+        this.setNewNumerator((this.getNumerator() * fraction.getDenominator()) + (this.getDenominator() * fraction.getNumerator()));
+        this.setNewDenominator(this.getDenominator() * fraction.getDenominator());
+
+        reduceFraction(this.newNumerator, this.newDenominator);
+        
+        resultFraction = new Fraction(this.getNewNumerator(), this.getNewDenominator());
+        return resultFraction;
     }
 
     @Override
-    public void multiplication(int numerator2, int denominato2) {
-        numerator = getNumerator() * numerator2;
-        denominator = getDenominator() * denominato2;
-        reduceFraction(numerator, denominator);
+    public FractionInterface subtraction(FractionInterface fraction) {
+        this.setNewNumerator((this.getNumerator() * fraction.getDenominator()) - (this.getDenominator() * fraction.getNumerator()));
+        this.setNewDenominator(this.getDenominator() * fraction.getDenominator());
+        
+        reduceFraction(this.newNumerator, this.newDenominator);
+        
+        resultFraction = new Fraction(this.getNewNumerator(), this.getNewDenominator());
+        return resultFraction;
     }
 
     @Override
-    public void division(int numerator2, int denominato2) {
-        numerator = getNumerator() * denominato2;
-        denominator = getDenominator() * numerator2;
-        reduceFraction(numerator, denominator);
+    public FractionInterface multiplication(FractionInterface fraction) {
+        this.setNewNumerator(this.getNumerator() * fraction.getNumerator());
+        this.setNewDenominator(this.getDenominator() * fraction.getDenominator());
+        
+        reduceFraction(this.newNumerator, this.newDenominator);
+        
+        resultFraction = new Fraction(this.getNewNumerator(), this.getNewDenominator());
+        return resultFraction;
     }
 
+    @Override
+    public FractionInterface division(FractionInterface fraction) {
+        this.setNewNumerator(this.getNumerator() * fraction.getDenominator());
+        this.setNewDenominator(this.getDenominator() * fraction.getNumerator());
+        
+        reduceFraction(this.newNumerator, this.newDenominator);
+        
+        resultFraction = new Fraction(this.getNewNumerator(), this.getNewDenominator());
+        return resultFraction;
+    }
+    
     @Override
     public int gcd(int a, int b) {
         if(b == 0){
@@ -77,19 +123,19 @@ public class Fraction implements FractionInterface {
     public void reduceFraction(int x, int y) {
         int d = gcd(x, y);
         
-        this.numerator = x / d;
-        this.denominator = y / d;
+        this.newNumerator = x / d;
+        this.newDenominator = y / d;
     }
 
     @Override
     public String toString(){
-        if(denominator == 1){
+        if(this.denominator == 1){
             
-            return numerator + "";
+            return this.numerator + "";
             
         }else{
             
-            return numerator + "/" + denominator;
+            return this.numerator + "/" + this.denominator;
             
         }
         

@@ -8,6 +8,8 @@ package fraction;
 public class FractionCalculator extends javax.swing.JFrame {
 
   private FractionInterface fraction;
+  private FractionInterface fraction2;
+  private FractionInterface resultFraction;
   private int numerator1;
   private int denominator1;
   private int numerator2;
@@ -26,12 +28,13 @@ public class FractionCalculator extends javax.swing.JFrame {
       denominator2 = Integer.parseInt(jtfDenominator2.getText());
       
       fraction = new Fraction(numerator1, denominator1);
+      fraction2 = new Fraction(numerator2, denominator2);
   }
   
   public void result(String operator){
-      String resultString = numerator1 + "/" + denominator1 + operator + 
-                            numerator2 + "/" + denominator2 + " = " +
-                            fraction;
+      String resultString = fraction.toString()  + operator + 
+                            fraction2.toString() +  " = "   +
+                            resultFraction.toString();
       jtfResult.setText(resultString);
   }
   
@@ -203,25 +206,25 @@ public class FractionCalculator extends javax.swing.JFrame {
   
   private void jbtAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtAddActionPerformed
     getValue();
-    fraction.addition(numerator2, denominator2);
+    resultFraction = fraction.addition(fraction2);
     result("  +  ");
   }//GEN-LAST:event_jbtAddActionPerformed
 
   private void jbtSubtractActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtSubtractActionPerformed
     getValue();
-    fraction.subtraction(numerator2, denominator2);
+    resultFraction = fraction.subtraction(fraction2);
     result("  -  ");
   }//GEN-LAST:event_jbtSubtractActionPerformed
 
   private void jbtMultiplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtMultiplyActionPerformed
     getValue();
-    fraction.multiplication(numerator2, denominator2);
+    resultFraction = fraction.multiplication(fraction2);
     result("  *  ");
   }//GEN-LAST:event_jbtMultiplyActionPerformed
 
   private void jbtDivideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtDivideActionPerformed
     getValue();
-    fraction.division(numerator2, denominator2);
+    resultFraction = fraction.division(fraction2);
     result("  /  ");
   }//GEN-LAST:event_jbtDivideActionPerformed
 
