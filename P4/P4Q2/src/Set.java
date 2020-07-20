@@ -1,6 +1,8 @@
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
-public class Set<T> implements SetInterface<T>{
+public class Set<T> implements IteratorInterface<T>{
 
     private T[] setElement;
     private int length;
@@ -130,5 +132,45 @@ public class Set<T> implements SetInterface<T>{
     
     public boolean isEmpty(){
         return length == 0;
+    }
+
+    @Override
+    public Iterator<T> getIterator() {
+        return new IteratorForSet();
+    }
+    
+    private class IteratorForSet implements Iterator<T> {
+
+        private int nextIndex;
+        private boolean wasNextCalled; // needed by remove
+
+        private IteratorForSet() {
+          nextIndex = 0;
+          wasNextCalled = false;
+        }
+
+        @Override
+        public boolean hasNext() {
+          return nextIndex < length;
+        }
+
+        @Override
+        public T next() {
+          if (hasNext()) {
+            wasNextCalled = true;
+            T nextEntry = setElement[nextIndex];
+            nextIndex++; // advance iterator
+
+            return nextEntry;
+            
+          } else {
+            throw new NoSuchElementException("Illegal call to next();"
+                    + "iterator is after end of list.");
+          }
+        }
+
+        public void remove() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
     }
 }
