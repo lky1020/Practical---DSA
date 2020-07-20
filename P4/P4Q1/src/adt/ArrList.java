@@ -17,7 +17,7 @@ public class ArrList<T> implements ListInterface<T> {
 
   public boolean add(T newEntry) {
     //check whether is full
-    if(length == array.length){
+    if(isArrayFull()){
         T[] oldArray = array;
         array = (T[]) new Object[array.length * 2];
         
