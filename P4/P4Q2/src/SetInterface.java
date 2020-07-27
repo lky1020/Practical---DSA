@@ -45,4 +45,13 @@ public interface SetInterface<T> {
     Return: Set Object that contain the elements that are common in both current set and anotherSet
     */
     public Set intersection(Set anotherSet);
+    
+    /*
+    boolean isEmpty()
+    Description: Check to see if the set is empty
+    Pre-condition: none
+    Post-condition: none
+    Return: true if the number of set is equals zero else false
+    */
+    public boolean isEmpty();
 }

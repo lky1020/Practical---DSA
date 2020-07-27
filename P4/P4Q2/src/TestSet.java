@@ -1,7 +1,6 @@
 
 import java.util.Iterator;
 
-
 public class TestSet {
     
     private static IteratorInterface<Set> set;
@@ -22,7 +21,8 @@ public class TestSet {
         set1.add(3);
         set1.add(4);
         set1.add(5);
-        
+
+
         set2.add(6);
         set2.add(7);
         set2.add(8);
@@ -56,7 +56,7 @@ public class TestSet {
         System.out.println(set1.isEmpty());
         System.out.println(set4.isEmpty());*/
        
-        new TestSet();
+        //new TestSet();
     }
     
     public static <T> void displayList(IteratorInterface<T> aList) {

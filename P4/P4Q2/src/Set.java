@@ -1,6 +1,4 @@
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 public class Set<T> implements IteratorInterface<T>{
 
@@ -34,21 +32,41 @@ public class Set<T> implements IteratorInterface<T>{
     }
     
     
-    @Override
-    public boolean add(T newElement) {
-        //check whether exist the array size
-        if(length == setElement.length){
-            T[] oldSetElement = setElement;
-            setElement = (T[]) new Object[setElement.length * 2];
-            
-            for(int i = 0; i < oldSetElement.length; i++){
-                setElement[i] = oldSetElement[i];
+    public boolean hasElement(T element){
+        //Check whether there is a duplicate element
+        for(int i = 0; i < length; i++){
+            if(setElement[i].equals(element)){
+                return true;
             }
         }
         
-        setElement[length] = newElement;
-        length++;
-        return true;
+        return false;
+    }
+    
+    @Override
+    public boolean add(T newElement) {
+        
+       
+        if(hasElement(newElement) == true){
+            return false;
+        }else{
+            
+            //check whether exist the array size
+            if(length == setElement.length){
+                T[] oldSetElement = setElement;
+                setElement = (T[]) new Object[setElement.length * 2];
+
+                for(int i = 0; i < oldSetElement.length; i++){
+                    setElement[i] = oldSetElement[i];
+                }
+            }
+
+            setElement[length] = newElement;
+            length++;
+            return true;
+            
+        }
+
     }
 
     @Override
@@ -69,16 +87,24 @@ public class Set<T> implements IteratorInterface<T>{
     public boolean checkSubset(Set anotherSet) {
         
         T[] anotherSetElement = (T[])anotherSet.getSetElement();
-        
-        for(int i = 0; i < length; i++){
-            for(int j = 0; j < anotherSet.getLength(); j++){
-                if(setElement[i] == anotherSetElement[j]){
-                    return true;
+
+        if(anotherSetElement.length > length){
+            
+            return false;
+            
+        }else{
+            
+            for(int i = 0; i < anotherSet.getLength(); i++){
+
+                if(hasElement(anotherSetElement[i]) == false){
+                    
+                    return false;
+                    
                 }
             }
         }
-        
-        return false;
+
+        return true;
     }
 
     @Override
@@ -111,6 +137,11 @@ public class Set<T> implements IteratorInterface<T>{
     }
     
     @Override
+    public boolean isEmpty(){
+        return length == 0;
+    }
+    
+    @Override
     public String toString(){
         String str = "";
         
@@ -128,10 +159,6 @@ public class Set<T> implements IteratorInterface<T>{
         for (int index = removedIndex; index < lastIndex; index++) {
           setElement[index] = setElement[index + 1];
         }
-    }
-    
-    public boolean isEmpty(){
-        return length == 0;
     }
 
     @Override
