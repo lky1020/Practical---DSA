@@ -37,9 +37,16 @@ public class QQueue<T> implements QueueInterface<T> {
         T data = null;
         
         if(!isEmpty()){
-            Node temp = lastNode.next;
-            data = temp.data;
-            lastNode.next = temp.next;
+            
+            data = lastNode.next.data;
+            
+            if(lastNode == lastNode.next){
+                lastNode = null;
+            }
+            else{
+                lastNode.next = lastNode.next.next;
+            }
+            
         }
         
         size--;
