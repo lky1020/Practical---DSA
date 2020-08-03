@@ -1,7 +1,4 @@
 
-import java.util.EmptyStackException;
-
-
 public class SStack<T> implements StackInterface<T>{
 
     
@@ -28,12 +25,9 @@ public class SStack<T> implements StackInterface<T>{
         //for return the value
         T data = null;
         
-        if(isEmpty()) throw new EmptyStackException();
-        else{
-            data = topNode.getData();
-            //Node temp = topNode; // temp for topNode for setNext(null) before the topNode been replace by getNext();
-            topNode = topNode.getNext();
-            //temp.setNext(null);
+        if(!isEmpty()){
+            data = topNode.data;
+            topNode = topNode.next;
             size--;
         }
         
@@ -44,9 +38,8 @@ public class SStack<T> implements StackInterface<T>{
     public T peek() {
         T data = null;
         
-        if(isEmpty()) throw new EmptyStackException();
-        else{
-            data = topNode.getData();
+        if(!isEmpty()){
+            data = topNode.data;
         }
         
         return data;
@@ -67,33 +60,16 @@ public class SStack<T> implements StackInterface<T>{
         private T data;
         private Node next;
         
-        Node(T data){
+        private Node(T data){
             this.data = data;
             this.next = null;
         }
         
-        Node(T data, Node next){
+        private Node(T data, Node next){
             this.data = data;
             this.next = next;
         }
 
-        public T getData() {
-            return data;
-        }
-
-        public void setData(T data) {
-            this.data = data;
-        }
-
-        public Node getNext() {
-            return next;
-        }
-
-        public void setNext(Node next) {
-            this.next = next;
-        }
-        
-        
     }
     
 }
