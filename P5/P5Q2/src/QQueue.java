@@ -18,14 +18,13 @@ public class QQueue<T> implements QueueInterface<T> {
         
         if(isEmpty()){
             lastNode = node;
-            lastNode.setNext(lastNode);
+            lastNode.next = lastNode;
 
         }else{
-            Node temp = lastNode.getNext();
-            lastNode.setNext(node);
+            Node temp = lastNode.next;
+            lastNode.next = node;
             lastNode = node;
-            lastNode.setNext(temp);
-
+            lastNode.next = temp;
         }
         
         size++;
@@ -38,9 +37,9 @@ public class QQueue<T> implements QueueInterface<T> {
         T data = null;
         
         if(!isEmpty()){
-            Node temp = lastNode.getNext();
-            data = temp.getData();
-            lastNode.setNext(temp.getNext());
+            Node temp = lastNode.next;
+            data = temp.data;
+            lastNode.next = temp.next;
         }
         
         size--;
@@ -55,7 +54,7 @@ public class QQueue<T> implements QueueInterface<T> {
         
         if(!isEmpty()){
             
-            temp = lastNode.getNext().getData();
+            temp = lastNode.next.data;
         }
         
         return temp;
@@ -85,24 +84,6 @@ public class QQueue<T> implements QueueInterface<T> {
             this.data = data;
             this.next = next;
         }
-
-        public T getData() {
-            return data;
-        }
-
-        public void setData(T data) {
-            this.data = data;
-        }
-
-        public Node getNext() {
-            return next;
-        }
-
-        public void setNext(Node next) {
-            this.next = next;
-        }
-        
-        
     }
     
 }
