@@ -9,7 +9,6 @@ public class TestQQueue {
         queue.enqueue(40);
         queue.enqueue(50);
         
-        System.out.println("After enqueue, size of the queue: " + queue.size());
         System.out.println("Front is: " + queue.getFront());
         
         System.out.println("*** Testing dequeue ***");
@@ -17,6 +16,5 @@ public class TestQQueue {
             System.out.println(queue.dequeue());
         }
         
-        System.out.println("After dequeue, size of the queue: " + queue.size());
     }
 }

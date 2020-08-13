@@ -2,14 +2,9 @@
 public class QQueue<T> implements QueueInterface<T> {
 
     private Node lastNode;
-    private int size;
     
     public QQueue(){
         clear();
-    }
-    
-    public int size(){
-        return this.size;
     }
     
     @Override
@@ -26,8 +21,6 @@ public class QQueue<T> implements QueueInterface<T> {
             lastNode = node;
             lastNode.next = temp;
         }
-        
-        size++;
         
     }
 
@@ -48,8 +41,6 @@ public class QQueue<T> implements QueueInterface<T> {
             }
             
         }
-        
-        size--;
 
         return data;
     }
@@ -69,13 +60,12 @@ public class QQueue<T> implements QueueInterface<T> {
 
     @Override
     public boolean isEmpty() {
-        return size == 0;
+        return lastNode == null;
     }
 
     @Override
     public void clear() {
         this.lastNode = null;
-        this.size = 0;
     }
     
     private class Node{
