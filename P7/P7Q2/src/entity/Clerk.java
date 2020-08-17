@@ -43,10 +43,8 @@ public class Clerk extends Employee{
     }
 
     @Override
-    public int compareTo(Object o) {
-        Employee other = (Employee) o;
-        
-        if(this.getId()  > other.getId()){
+    public int compareTo(Employee o) {
+        if(this.getId()  > o.getId()){
             return 1;
         }
         else

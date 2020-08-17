@@ -5,6 +5,7 @@ import java.util.*;
 
 public class TestEmployee {
     public static void main(String[] args){
+        //Array
         Employee[] emp = new Employee[5];
         
         emp[0] = new Clerk(2222, "Col. Sanders", 5800.00, 2.0, 50);
@@ -17,7 +18,32 @@ public class TestEmployee {
         
         printResult(emp);
         
-        //SortedListInterface<Employee> empSortedList = new SortedLinkedList<>();
+        //SortedList
+        SortedListInterface<Employee> empSortedList = new SortedLinkedList<>();
+        empSortedList.add(new Clerk(2222, "Col. Sanders", 5800.00, 2.0, 50));
+        empSortedList.add(new Clerk(8888, "John Doe", 2000.00, 1.0, 18));
+        empSortedList.add(new Manager(5555, "Jack Bauer", 10000.00, 88.88));
+        empSortedList.add(new Manager(3333, "Tony Fey", 7000.00, 127.00));
+        empSortedList.add(new Manager(7777, "Lee Hom", 7000.00, 976.55));
+        
+        System.out.println("\n\nEmpID\t" + String.format("%15s", "Employee Name" + "\tSalary(RM)"));
+        System.out.print(empSortedList);
+        
+        //SortedListWithIterator
+        SortedListWithIteratorInterface<Employee> empSortedListWithIterator = new SortedLinkedListWithIterator<>();
+        empSortedListWithIterator.add(new Clerk(2222, "Col. Sanders", 5800.00, 2.0, 50));
+        empSortedListWithIterator.add(new Clerk(8888, "John Doe", 2000.00, 1.0, 18));
+        empSortedListWithIterator.add(new Manager(5555, "Jack Bauer", 10000.00, 88.88));
+        empSortedListWithIterator.add(new Manager(3333, "Tony Fey", 7000.00, 127.00));
+        empSortedListWithIterator.add(new Manager(7777, "Lee Hom", 7000.00, 976.55));
+        
+        Iterator<Employee> empIterator = empSortedListWithIterator.getIterator();
+        
+        System.out.println("\n\nEmpID\t" + String.format("%15s", "Employee Name" + "\tSalary(RM)"));
+        
+        while(empIterator.hasNext()){
+            System.out.print(empIterator.next());
+        }
     }
     
     public static void arrangeArray(Employee[] emp){

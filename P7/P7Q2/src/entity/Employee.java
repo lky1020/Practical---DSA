@@ -1,7 +1,7 @@
 
 package entity;
 
-public abstract class Employee<T extends Comparable<T>> implements Comparable<Employee<T>>{
+public abstract class Employee implements Comparable<Employee>{
     private int id;
     private String name;
     private double basicSalary;
