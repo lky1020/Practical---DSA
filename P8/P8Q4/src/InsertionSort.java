@@ -11,7 +11,7 @@ public class InsertionSort {
         }
     }
     
-    public static <T extends Comparable<? super T>> T[] insertionSort(T[] arr){
+    public static <T extends Comparable<T>> T[] insertionSort(T[] arr){
         int length = arr.length;
         
         for(int i = 1; i < length; i++){
