@@ -4,14 +4,14 @@ public class SelectionSort {
         
         Integer[] arr = new Integer[]{ 15, 8, 10, 2, 5};
         
-        arr = selectionSort(arr, arr.length);
+        selectionSort(arr, arr.length);
         
         for(int i = 0; i < arr.length; i++){
             System.out.println(arr[i]);
         }
     }
     
-    public static <T extends Comparable<T>> T[] selectionSort(T[] arr, int length){
+    public static <T extends Comparable<T>> void selectionSort(T[] arr, int length){
         
         for(int i = 0; i < length - 1; i++){
             
@@ -34,6 +34,5 @@ public class SelectionSort {
             arr[i] = temp;
         }
         
-        return arr;
     }
 }
