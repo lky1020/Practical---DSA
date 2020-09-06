@@ -11,7 +11,7 @@ public class SelectionSort {
         }
     }
     
-    public static <T extends Comparable<? super T>> T[] selectionSort(T[] arr, int length){
+    public static <T extends Comparable<T>> T[] selectionSort(T[] arr, int length){
         
         for(int i = 0; i < length - 1; i++){
             
