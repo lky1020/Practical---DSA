@@ -2,7 +2,7 @@
 public class SelectionSort {
     public static void main(String args[]){
         
-        int[] arr = new int[]{ 15, 8, 10, 2, 5};
+        Integer[] arr = new Integer[]{ 15, 8, 10, 2, 5};
         
         arr = selectionSort(arr, arr.length);
         
@@ -11,7 +11,7 @@ public class SelectionSort {
         }
     }
     
-    public static int[] selectionSort(int[] arr, int length){
+    public static <T extends Comparable<? super T>> T[] selectionSort(T[] arr, int length){
         
         for(int i = 0; i < length - 1; i++){
             
@@ -20,7 +20,7 @@ public class SelectionSort {
             
             for(int j = indexOfSmallest + 1; j < length; j++){
                 
-                if(arr[j] < arr[indexOfSmallest]){
+                if(arr[j].compareTo(arr[indexOfSmallest]) <= -1){
                     /*if arr[j] smaller than arr[indexOfSmallest]
                     then j will become smallest index*/
                     indexOfSmallest = j;
@@ -29,7 +29,7 @@ public class SelectionSort {
             }
             
             //Swap the element (smaller to front of array)
-            int temp = arr[indexOfSmallest];
+            T temp = arr[indexOfSmallest];
             arr[indexOfSmallest] = arr[i];
             arr[i] = temp;
         }
