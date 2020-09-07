@@ -32,7 +32,17 @@ public class SortedArrayList<T extends Comparable<T>> implements SortedListInter
 
   @Override
   public boolean remove(T anEntry) {
-    throw new UnsupportedOperationException();
+    if(!isEmpty()){
+        
+        int index = binarySearch(anEntry);
+        
+        removeGap(index + 1);
+        length--;
+        
+        return true;
+    }
+    
+    return false;
   }
 
   @Override
@@ -42,6 +52,23 @@ public class SortedArrayList<T extends Comparable<T>> implements SortedListInter
 
   @Override
   public int contains(T anEntry) {
+      
+     /*int found = -1;
+      
+      for(int index = 0;index < length; index++){
+          if(anEntry.equals(list[index])){
+              
+              found = index;
+              
+          }else if(anEntry.compareTo(list[index]) <= -1){ 
+              
+              break;
+              
+          }
+      }
+      
+      return found;*/
+      
     return binarySearch(anEntry);
   }
   
@@ -49,29 +76,21 @@ public class SortedArrayList<T extends Comparable<T>> implements SortedListInter
     int i = 0;
     int arrLength = list.length - 1;
     
-    //prevent nullpointerexception
+    //Since it will have null, because it may use default capacity
     while(list[arrLength] == null){
         arrLength -= 1;
     }
     
-    if(!isEmpty()){
-        while(i < arrLength){
-            int middle = i + (arrLength - 1)/2;
-            
-            //check arr[m] equals desiredItem
-            if(desiredItem.equals(list[middle])){
-                return middle;
-            }
-
-            //ignore left half if desiredItem greater
-            else if(desiredItem.compareTo(list[middle]) < 0){
-                arrLength = middle + 1;
-            }
-
-            //ignore right half if desiredItem smaller
-            else{
-                arrLength = middle - 1;
-            }
+    while(i <= arrLength){
+        int middle = (i + arrLength) / 2;
+        
+        if(desiredItem.compareTo(list[middle]) < 0){
+            arrLength = middle - 1;
+        }
+        else if(desiredItem.compareTo(list[middle]) > 0){
+            i = middle + 1;
+        }else{
+            return middle;
         }
     }
     
