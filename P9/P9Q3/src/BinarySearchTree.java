@@ -353,7 +353,13 @@ public class BinarySearchTree<T extends Comparable<T>> implements BinarySearchTr
     
     private Node findMin(Node node){
 
-        if(node == null){
+        if(node.left != null){
+            node = findMin(node.left);
+        }
+        
+        return node;
+        
+        /*if(node == null){
             return node;
         }
         
@@ -369,7 +375,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements BinarySearchTr
             min = right;
         }
         
-        return min;
+        return min;*/
     }
 
 }
