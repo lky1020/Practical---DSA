@@ -2,7 +2,7 @@
 import java.io.Serializable;
 
 
-public class DecisionTree<T> implements DecisionTreeInterface<T> {
+public class DecisionTree<T> implements DecisionTreeInterface<T> , Serializable{
 
     private Node root;
     private Node currentNode;
